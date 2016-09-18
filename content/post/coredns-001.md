@@ -5,8 +5,9 @@ tags = ["Release", "001", "Notes"]
 title = "CoreDNS-001 Release"
 +++
 
-CoreDNS-001 has been released. This is the first release! It provides a complete DNS server, that
-also does DNSSEC and is useful for service discovery in cloud setups.
+CoreDNS-001 has been [released](https://github.com/miekg/coredns/releases). This is the first
+release! It provides a complete DNS server, that also does DNSSEC and is useful for service
+discovery in cloud setups.
 
 # What is CoreDNS?
 
@@ -27,8 +28,9 @@ lines of code from CoreDNS.
 
 ## New Middlewares
 
-* There is now a specific middleware to deal with [Kubernetes](https://kubernetes.io).
-* The `bind` middleware allows you to bind to a specific IP address, instead of using the wildcard
+* There is now a [specific
+  middleware](https://github.com/miekg/coredns/tree/master/middleware/kubernetes) to deal with [Kubernetes](https://kubernetes.io).
+* The `bind` [middleware](https://github.com/miekg/coredns/tree/master/middleware/bind)  allows you to bind to a specific IP address, instead of using the wildcard
   address.
 * All other middlewares are reworked to fit in the new plugin framework from Caddy version 0.9 (and
   up).
@@ -44,3 +46,4 @@ Michael Richmond, Miek Gieben, pixelbender, Yong Tang.
 
 The forum on <https://forum.caddyserver.com> has section for
 [CoreDNS](https://forum.caddyserver.com/c/coredns), where you can submit questions and get answers.
+Or use [Twitter](https://twitter.com/corednsio).
