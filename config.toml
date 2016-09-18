@@ -6,7 +6,7 @@ copyright = "CoreDNS All Rights Reserved"
 theme = "hugo-zen"
 
 [params]
-  logo      = "/images/logo.jpg"
+  logo      = "/images/cloud.jpg"
   twitter   = "https://twitter.com/corednsio"
 #  facebook  = "https://www.facebook.com/ochiishikoichiro"
   github    = "https://github.com/miekg/coredns"
