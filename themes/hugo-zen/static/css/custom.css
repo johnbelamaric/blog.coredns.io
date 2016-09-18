@@ -62,6 +62,18 @@ main {
   color: #888;
 }
 
+.entry-meta a {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: small;
+  color: #888;
+}
+
+a.meta {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 .footer-link {
   margin: 2rem 0;
 }
