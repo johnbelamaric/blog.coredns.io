@@ -26,14 +26,21 @@ CoreDNS is now a (the first!) server type plugin in Caddy - this means we can le
 from Caddy without having to fork (and maintain) it all. By doing so we were able to remove 9000
 lines of code from CoreDNS.
 
+The core (ghe!) of CoreDNS is now in a good shape. Future work will focus on making the
+middleware better, e.g. the proxy implementation is slow and needs to be [faster](https://github.com/miekg/coredns/issues/184).
+
 ## New Middlewares
 
 * There is now a [specific
   middleware](https://github.com/miekg/coredns/tree/master/middleware/kubernetes) to deal with [Kubernetes](https://kubernetes.io).
 * The `bind` [middleware](https://github.com/miekg/coredns/tree/master/middleware/bind)  allows you to bind to a specific IP address, instead of using the wildcard
   address.
+* A `whoami` [middleware](https://github.com/miekg/coredns/tree/master/middleware/whoami) reports
+  back your address and port.
 * All other middlewares are reworked to fit in the new plugin framework from Caddy version 0.9 (and
   up).
+
+The `whoami` middleware is also used when CoreDNS starts up and can't find a Corefile.
 
 # Contributors
 
@@ -41,6 +48,8 @@ The follow people help with getting this release done:
 
 Cricket Liu, elcore, Félix Cantournet, Ilya Dmitrichenko, Joe Blow, Lee, Matt Layher,
 Michael Richmond, Miek Gieben, pixelbender, Yong Tang.
+
+If you want to help, please check out one of the [issues](https://github.com/miekg/coredns/issues/) and start coding!
 
 # Documentation and Help
 
