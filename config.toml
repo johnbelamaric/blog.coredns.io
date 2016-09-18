@@ -1,0 +1,18 @@
+baseurl = "https://blog.coredns.io/"
+languageCode = "en-us"
+title = "CoreDNS News"
+author = "CoreDNS Authors"
+copyright = "CoreDNS All Rights Reserved"
+theme = "hugo-zen"
+
+[params]
+  logo      = "/images/logo.jpg"
+  twitter   = "https://twitter.com/corednsio"
+#  facebook  = "https://www.facebook.com/ochiishikoichiro"
+  github    = "https://github.com/miekg/coredns"
+#  email     = "rakuishi@gmail.com"
+#  analytics = "UA-12345678-9"
+
+[permalinks]
+    post = "/:year/:month/:day/:title/"
+    page = "/:title/"
