@@ -10,8 +10,7 @@ theme = "hugo-zen"
   twitter   = "https://twitter.com/corednsio"
 #  facebook  = "https://www.facebook.com/ochiishikoichiro"
   github    = "https://github.com/miekg/coredns"
-#  email     = "rakuishi@gmail.com"
-#  analytics = "UA-12345678-9"
+  email     = "miek@miek.nl"
 
 [permalinks]
     post = "/:year/:month/:day/:title/"
