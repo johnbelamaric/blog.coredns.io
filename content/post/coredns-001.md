@@ -44,7 +44,7 @@ The `whoami` middleware is also used when CoreDNS starts up and can't find a Cor
 
 # Contributors
 
-The follow people help with getting this release done:
+The following people helped with getting this release done:
 
 Cricket Liu, elcore, Félix Cantournet, Ilya Dmitrichenko, Joe Blow, Lee, Matt Layher,
 Michael Richmond, Miek Gieben, pixelbender, Yong Tang.
