@@ -33,14 +33,14 @@ middleware better, e.g. the proxy implementation is slow and needs to be [faster
 
 * There is now a [specific
   middleware](https://github.com/miekg/coredns/tree/master/middleware/kubernetes) to deal with [Kubernetes](https://kubernetes.io).
-* The `bind` [middleware](https://github.com/miekg/coredns/tree/master/middleware/bind)  allows you to bind to a specific IP address, instead of using the wildcard
+* The *bind* [middleware](https://github.com/miekg/coredns/tree/master/middleware/bind)  allows you to bind to a specific IP address, instead of using the wildcard
   address.
-* A `whoami` [middleware](https://github.com/miekg/coredns/tree/master/middleware/whoami) reports
+* A *whoami* [middleware](https://github.com/miekg/coredns/tree/master/middleware/whoami) reports
   back your address and port.
 * All other middlewares are reworked to fit in the new plugin framework from Caddy version 0.9 (and
   up).
 
-The `whoami` middleware is also used when CoreDNS starts up and can't find a Corefile.
+The *whoami* middleware is also used when CoreDNS starts up and can't find a Corefile.
 
 # Contributors
 
