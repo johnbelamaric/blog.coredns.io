@@ -1,5 +1,5 @@
 +++
-date = "2016-11-10T21:30:32Z"
+date = "2016-11-11T16:38:32Z"
 slug = "CoreDNS-003 Release Notes"
 tags = ["Release", "003", "Notes"]
 title = "CoreDNS-003 Release"
@@ -19,7 +19,7 @@ Refused queries are properly logged and exported if metrics are enabled.
 
 * *proxy*: allow  `/etc/resolv.conf` to be used in the configuration.
 * *metrics*: add tests and normalize some of the metrics. Removed the AXFR size metrics.
-* *cache*: Added size and capacity of the cache (for both `denial` and `success` cache types). 
+* *cache*: Added size and capacity of the cache (for both `denial` and `success` cache types).
   Don't cache meta data records and zone transfers.
 * *dnssec*: metrics were unused, hooked them up: export size and capacity of the signature cache.
 * *loadbalance*: balance MX records as well.
@@ -33,6 +33,14 @@ Refused queries are properly logged and exported if metrics are enabled.
 
 The following people helped with getting this release done:
 
+Ben Kochie,
+Chris O'Haver,
+John Belamaric,
+Jonathan Dickinson,
+Manuel Alejandro de Brito Fontes,
+Michael Grosser,
+Miek Gieben,
+Yong Tang.
 
 If you want to help, please check out one of the [issues](https://github.com/miekg/coredns/issues/)
 and start coding!
