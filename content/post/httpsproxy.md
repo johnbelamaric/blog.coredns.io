@@ -52,4 +52,5 @@ By default, `dns.google.com` will be re-resolved every 30 seconds using 8.8.8.8 
 override these defaults). This is the only query not encrypted, but this will probably lead to
 a very boring browser history.
 
-Next, *I* need to configure a Raspberry Pi and install CoreDNS on it.
+Next, *I* need to configure a Raspberry Pi and install CoreDNS on it. And as with all CoreDNS
+developements [feedback is welcome](https://github.com/miekg/coredns/issues).
