@@ -7,7 +7,7 @@ title = "DNS over HTTPS"
 +++
 
 Since almost a year Google has a DNS service that can be queried over HTTPS:
-<https://dns.google.com>, this means your queries are encrypted and can only be seen by you (and
+<https://dns.google.com>. This means your queries are encrypted and can only be seen by you (and
 Google). Seeing all the press about the
 [UK's snooper's charter](https://www.theguardian.com/technology/askjack/2016/nov/24/how-can-i-protect-myself-from-government-snoopers)
 I though I should implement this as a middleware in CoreDNS.
