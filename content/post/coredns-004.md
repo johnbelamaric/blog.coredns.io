@@ -5,7 +5,7 @@ tags = ["Release", "004", "Notes"]
 title = "CoreDNS-004 Release"
 +++
 
-CoreDNS-004 has been [released](https://github.com/miekg/coredns/releases)!
+CoreDNS-004 has been [released](https://github.com/miekg/coredns/releases/tag/v004)!
 
 CoreDNS is a DNS server that chains middleware, where each middleware implements a DNS feature.
 
