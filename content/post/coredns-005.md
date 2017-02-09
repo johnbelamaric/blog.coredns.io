@@ -50,7 +50,6 @@ added. Documentation can be found in
 The following people helped with getting this release done:
 
 Bob Wasniak,
-Chris OHaver,
 Chris O'Haver,
 devnev,
 Dmytro Kislov,
