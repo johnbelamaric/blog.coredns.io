@@ -243,7 +243,7 @@ _tcp.example.org.	0	IN	SRV	0 0 33435 .
 ~~~
 Yes, it correctly sees we've used TCP this time (and of course a different port).
 
-There are already a lot of different middleware in CoreDNS. New, exciting once, are always welcome. So if you
+There are already a lot of different middleware in CoreDNS. New, exciting ones, are always welcome. So if you
 have an idea open an issue on the tracker.
 
 This is an updated version of the [previous
