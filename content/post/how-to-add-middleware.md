@@ -7,7 +7,7 @@ title = "How to Add Middleware to CoreDNS"
 
 CoreDNS is a DNS server that chains middleware. Middleware is defined as a method `ServeDNS()` that
 gets a request and either responds to the client or passes it on to the next middleware. If none of
-the middlewares handle the request a default response of SERVFAIL is returned.
+the middleware handle the request a default response of SERVFAIL is returned.
 
 This blog post details how to add middleware to CoreDNS. We're using the example of the *whoami*
 middleware which is a CoreDNS middleware and loaded by default if nothing is specified.
@@ -19,18 +19,21 @@ its purpose is to echo back the client's IP (IPv4 or IPv6), the transport used (
 the request port number.
 
 Next question is: "What is the name of this new middleware?" Try to find a short, descriptive name
-for this. In case this, we already had a (good) name: *whoami*.
+for this. In this case, we already had a (good) name: *whoami*.
 
 ## Middleware
 
-A middleware consists out of an number of parts:
+A middleware consists of a number of parts:
 
-1. The registration of the middelware
+1. The registration of the middleware
 2. The setup function that parses the *whois* directive and
-    possible option from the Corefile
-3. The `serveDNS()` and `Name()` methods
-4. Hooking it up
-5. Using it
+    possible options from the Corefile
+3. The `ServeDNS()` and `Name()` methods
+
+After we've defined the parts, we can:
+
+4. Hook it up
+5. Use it
 
 # 1. Registration
 
@@ -49,9 +52,9 @@ First you see that we're using `caddy.RegisterPlugin` which makes perfectly sens
 CoreDNS uses the [Caddy](https://caddyserver.com) server framework. The first argument is the name
 of the directive as used in the Corefile.
 
-The `ServerType` is "dns" because CoreDNS is of that servertype. The `Action` is the name of the
-setup function that takes care of the parsing of the Corefile. Its job is to return a type that
-implements the `middleware.Handler` interface.
+The `ServerType` is "dns" because CoreDNS is a DNS server; Caddy supports HTTP servers as well. The
+`Action` is the name of the setup function that takes care of the parsing of the Corefile. Its job
+is to return a type that implements the `middleware.Handler` interface.
 
 So whenever the Corefile parser sees "whoami", `setupWhoami` is called.
 
@@ -103,11 +106,11 @@ As seen the function gets a couple of parameters of which `w` is the client side
 returns a response to the client. As you will see below all interesting properties of the client
 connection can be retrieved from the
 [dns.ResponseWriter](https://godoc.org/github.com/miekg/dns#ResponseWriter). `r` is the incoming
-query. The `ServeDNS` returns a integer and/or an error. The values the integer can take are
-the DNS RCODEs, dns.ServerFailure, dns.NotImplemented, dns.Success, etc. etc. A successful return
-value indicates the middleware has written to the client.
+query. The `ServeDNS` method returns an integer and/or an error. The values the integer can take are
+the DNS RCODEs, dns.RcodeServerFailure, dns.RcodeNotImplemented, dns.RcodeSuccess, etc..
+A successful return value indicates the middleware has written to the client.
 
-`request.Request` is a helper struct that abstracts and cache some client-side properties, like
+`request.Request` is a helper struct that abstracts and caches some client-side properties, like
 EDNS0 records and the DNSSEC OK bit.
 
 Next we setup the reply message:
@@ -141,7 +144,7 @@ case 2:
     rr.(*dns.AAAA).AAAA = net.ParseIP(ip)
 }
 ~~~
-`IP()` returns the IP address of the client. `Family()` returns the transport used. Depending on the
+`IP()` returns the IP address of the client. `Family()` returns the IP version used. Depending on the
 family we either create a A or AAAA record with the client's address. Note we don't specify a TTL
 meaning it will be zero; indicating these records should not be cached.
 
@@ -176,7 +179,7 @@ Then we call `state.SizeOnDo(a)` which will set the correct EDNS0 record on the 
 setting the truncation bit). Then,
 finally, we call the `WriteMsg` method on `w` which writes the message back to the client.
 We indicate a successful (even though it might have failed - we didn't check the return value of
-`WriteMsg`) write be returning 0 and `nil`.
+`WriteMsg`) write by returning 0 and `nil`.
 
 # 4. Hooking it up
 
@@ -186,7 +189,7 @@ recently simplified and only consists out of editing `middleware.cfg` and adding
 ~~~
 210:whoami:whoami
 ~~~
-The initial number is used for sorting the middlware (more on that below), then the name of the
+The initial number is used for sorting the middleware (more on that below), then the name of the
 plugin as used in the registration and then the package inside the CoreDNS middleware directory.
 
 Each middleware has a place in the list of all other middlewares. For instance the caching
@@ -194,7 +197,7 @@ or the metrics middleware needs to come early, so that it can "see" the query an
 response and do cachy or metricsy things with it. A *whoami* middleware is not that special and can
 be placed relatively late in the list (hence the high number).
 
-Now do a `go gen && go build` to get a `coredns` binary that can be used with our shiny new middleware.
+Now do a `make` (or `go gen && go build`) to get a `coredns` binary that can be used with our shiny new middleware.
 This binary should include `dns.whoami` when called with `-plugins`.
 
 # 5. Using it
@@ -206,7 +209,7 @@ Write a Corefile:
     whoami
 }
 ~~~
-In words this says: be authortitative for the root `.` and below, meaning all posible queries will
+In words this says: be authoritative for the root `.` and below, meaning all possible queries will
 hit this stanza. And for each request call *whoami*.
 
 Start CoreDNS with: `coredns -conf Corefile -dns.port 1053`. Couple of notes here. CoreDNS
@@ -240,7 +243,7 @@ _tcp.example.org.	0	IN	SRV	0 0 33435 .
 ~~~
 Yes, it correctly sees we've used TCP this time (and of course a different port).
 
-There are already a lot of middlewares in CoreDNS. New, exiting once, are always welcome. So if you
+There are already a lot of middlewares in CoreDNS. New, exciting once, are always welcome. So if you
 have an idea open an issue on the tracker.
 
 This is an updated version of the [previous
