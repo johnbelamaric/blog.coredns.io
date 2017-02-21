@@ -5,7 +5,7 @@ tags = ["Release", "005", "Notes"]
 title = "CoreDNS-005 Release"
 +++
 
-CoreDNS-005 has been [released](https://github.com/miekg/coredns/releases/tag/v005)!
+CoreDNS-005 has been [released](https://github.com/coredns/coredns/releases/tag/v005)!
 
 CoreDNS is a DNS server that chains middleware, where each middleware implements a DNS feature.
 
@@ -16,7 +16,7 @@ CoreDNS is a DNS server that chains middleware, where each middleware implements
 A way to configure (external) middleware was added. Edit `middleware.cfg` and do a `go gen && go
 build` and your middleware has been added. This allows for out-of-tree middleware to be easily
 added. Documentation can be found in
-[middleware.cfg](https://github.com/miekg/coredns/blob/master/middleware.cfg).
+[middleware.cfg](https://github.com/coredns/coredns/blob/master/middleware.cfg).
 
 ## Middleware improvements
 
@@ -30,7 +30,7 @@ added. Documentation can be found in
 * *proxy*: fix a bug when a connection hangs and never gets release (#467)
 * *proxy*: Fold *httpproxy* into it, which is now a normal proxy with a special `protocol`. For
   Monitoring an extra label was added: `proxy_proto` that shows the protocol used (`dns` or `https_google`). 
-  See the [proxy README.md](https://github.com/miekg/coredns/blob/master/middleware/proxy/README.md) for details.
+  See the [proxy README.md](https://github.com/coredns/coredns/blob/master/middleware/proxy/README.md) for details.
 * *httpproxy*: removed because functionality is moved to *proxy*.
 * *kubernetes*: Now implements the full
   [Kubernetes DNS Specification](https://github.com/kubernetes/dns/blob/master/docs/specification.md),
@@ -42,7 +42,7 @@ added. Documentation can be found in
   zone list, you can just add a list of CIDRs using the `cidrs` option.
 * *rewrite*: allow rewriting more bits of the incoming packet. This required some backward
   *incompatible* changes, e.g. a new **FIELD** keyword is now required. See the 
-  [rewrite README.md](https://github.com/miekg/coredns/blob/master/middleware/rewrite/README.md) for details.
+  [rewrite README.md](https://github.com/coredns/coredns/blob/master/middleware/rewrite/README.md) for details.
 
 
 # Contributors
@@ -57,7 +57,7 @@ John Belamaric,
 Miek Gieben,
 Yong Tang.
 
-If you want to help, please check out one of the [issues](https://github.com/miekg/coredns/issues/)
+If you want to help, please check out one of the [issues](https://github.com/coredns/coredns/issues/)
 and start coding!
 
 # Documentation and Help

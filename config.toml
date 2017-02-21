@@ -9,7 +9,7 @@ theme = "hugo-zen"
   logo      = "/images/cloud.jpg"
   twitter   = "https://twitter.com/corednsio"
 #  facebook  = "https://www.facebook.com/ochiishikoichiro"
-  github    = "https://github.com/miekg/coredns"
+  github    = "https://github.com/coredns/coredns"
   email     = "miek@miek.nl"
 
 [permalinks]

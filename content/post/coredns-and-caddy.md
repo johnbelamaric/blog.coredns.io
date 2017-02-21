@@ -13,8 +13,8 @@ Note that if you select this option you get a binary that is *both* a DNS and we
 startup you can select between the two with `-type=dns|http` flag.
 
 The CoreDNS developers will still provide their own (DNS only) binaries over [at
-github](https://github.com/miekg/coredns/releases).
+github](https://github.com/coredns/coredns/releases).
 
 Note that we *also* have a CoreDNS category on the [Caddy
 forum](https://forum.caddyserver.com/c/coredns) where you can ask questions. Bugs and feature
-requests are probably better directed to our [github](https://github.com/miekg/coredns).
+requests are probably better directed to our [github](https://github.com/coredns/coredns).

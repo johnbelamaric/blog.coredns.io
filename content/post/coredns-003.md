@@ -5,7 +5,7 @@ tags = ["Release", "003", "Notes"]
 title = "CoreDNS-003 Release"
 +++
 
-CoreDNS-003 has been [released](https://github.com/miekg/coredns/releases)!
+CoreDNS-003 has been [released](https://github.com/coredns/coredns/releases)!
 
 CoreDNS is a DNS server that chains middleware, where each middleware implements a DNS feature.
 
@@ -42,7 +42,7 @@ Michael Grosser,
 Miek Gieben,
 Yong Tang.
 
-If you want to help, please check out one of the [issues](https://github.com/miekg/coredns/issues/)
+If you want to help, please check out one of the [issues](https://github.com/coredns/coredns/issues/)
 and start coding!
 
 # Documentation and Help

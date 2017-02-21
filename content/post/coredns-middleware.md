@@ -13,7 +13,7 @@ A new middleware adds new functionality to CoreDNS, i.e. *caching*, *metrics* an
 serving are all middlewares.
 
 If you want to write a new middleware and want it to be included by default, i.e. merged in the code
-base please open an [issue](https://github.com/miekg/coredns/issues) first to discuss initial design
+base please open an [issue](https://github.com/coredns/coredns/issues) first to discuss initial design
 and other things that may come up.
 
 ## How to Register a CoreDNS Middleware
@@ -45,7 +45,7 @@ The *Action* field of the `caddy.Plugin` struct is what makes a directive plugin
 function to run when CoreDNS is parsing and executing the Corefile.
 
 The action is simply a function that takes a caddy.Controller and returns an error:
-(We use [middleware.Error](https://godoc.org/github.com/miekg/coredns/middleware#Error) to prefix
+(We use [middleware.Error](https://godoc.org/github.com/coredns/coredns/middleware#Error) to prefix
 returned error with `middleware/foo: ` to improve error reporting).
 
 ``` go
@@ -84,7 +84,7 @@ directive name).
 ### Adding to CoreDNS
 
 To plug your middleware into CoreDNS, import it. This is done in
-[core/coredns.go](https://github.com/miekg/coredns/blob/master/core/coredns.go):
+[core/coredns.go](https://github.com/coredns/coredns/blob/master/core/coredns.go):
 
 
 ```go
@@ -92,7 +92,7 @@ import _ "your/plugin/package/path/here"
 ```
 
 This makes CoreDNS compile your plugin, but it is still not available, so the second step is
-to add it to [directives.go](https://github.com/miekg/coredns/blob/master/core/dnsserver/directives.go):
+to add it to [directives.go](https://github.com/coredns/coredns/blob/master/core/dnsserver/directives.go):
 
 Add the name (`foo`) of your middleware at the end of the file in the `directives` string slice.
 Note the ordering is important, because this is determines how the plugins are chained together.
@@ -100,8 +100,8 @@ Note the ordering is important, because this is determines how the plugins are c
 ## How DNS Middleware Works in CoreDNS
 
 Check out the [godoc for the middleware
-package](http://godoc.org/github.com/miekg/coredns/middleware). The most important type is
-[middleware.Handler](https://godoc.org/github.com/miekg/coredns/middleware#Handler).
+package](http://godoc.org/github.com/coredns/coredns/middleware). The most important type is
+[middleware.Handler](https://godoc.org/github.com/coredns/coredns/middleware#Handler).
 
 A `Handler` is a function that handles a DNS request. CoreDNS will do all the bookkeeping of setting
 up an DNS server for you, but you need to implement these two types.
@@ -111,7 +111,7 @@ up an DNS server for you, but you need to implement these two types.
 `middleware.Handler` is an interface similar to `http.Handler` except that it deals with DNS and the
 `ServeDNS` method returns `(int, error)`. The `int` is the DNS rcode, and the `error` is one that
 should be handled and/or logged. Read the
-[middleware.md](https://github.com/miekg/coredns/blob/master/middleware.md) doc for more details
+[middleware.md](https://github.com/coredns/coredns/blob/master/middleware.md) doc for more details
 about these return values.
 
 Handlers are usually a struct with at least one field, the next Handler in the chain:
@@ -175,10 +175,10 @@ configuration. It doesn't really matter as long as you chain in the `next` handl
 
 Simple examples of middleware that can be found in CoreDNS are:
 
-* [root](https://godoc.org/github.com/miekg/coredns/middleware/root); does not register itself as
+* [root](https://godoc.org/github.com/coredns/coredns/middleware/root); does not register itself as
   a middleware. It simply performs some setup.
-* [chaos](https://godoc.org/github.com/miekg/coredns/middleware/chaos); a DNS middleware that
+* [chaos](https://godoc.org/github.com/coredns/coredns/middleware/chaos); a DNS middleware that
   responds to `CH txt version.bind` requests.
 
-**Don't forget: the best documentation is the [godoc](https://godoc.org/github.com/miekg/coredns)
-and the [code](https://github.com/miekg/coredns) itself!**
+**Don't forget: the best documentation is the [godoc](https://godoc.org/github.com/coredns/coredns)
+and the [code](https://github.com/coredns/coredns) itself!**
