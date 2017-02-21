@@ -26,7 +26,7 @@ for this. In this case, we already had a (good) name: *whoami*.
 A middleware consists of a number of parts:
 
 1. The registration of the middleware
-2. The setup function that parses the *whois* directive and
+2. The setup function that parses the *whoami* directive and
     possible options from the Corefile
 3. The `ServeDNS()` and `Name()` methods
 
@@ -115,7 +115,7 @@ EDNS0 records and the DNSSEC OK bit.
 
 Next we setup the reply message:
 ~~~ go
-a := new(dns.Msg)
+a := &dns.Msg{}
 a.SetReply(r)
 a.Compress = true
 a.Authoritative = true
@@ -133,12 +133,12 @@ var rr dns.RR
 
 switch state.Family() {
 case 1:
-    rr = new(dns.A)
+    rr = &dns.A{}
     rr.(*dns.A).Hdr = dns.RR_Header{Name: state.QName(),
             Rrtype: dns.TypeA, Class: state.QClass()}
     rr.(*dns.A).A = net.ParseIP(ip).To4()
 case 2:
-    rr = new(dns.AAAA)
+    rr = &dns.AAAA{}
     rr.(*dns.AAAA).Hdr = dns.RR_Header{Name: state.QName(),
             Rrtype: dns.TypeAAAA, Class: state.QClass()}
     rr.(*dns.AAAA).AAAA = net.ParseIP(ip)
@@ -150,7 +150,7 @@ meaning it will be zero; indicating these records should not be cached.
 
 Next we want to encode the client's source port and transport protocol used.
 ~~~go
-srv := new(dns.SRV)
+srv := &dns.SRV{}
 srv.Hdr = dns.RR_Header{Name: "_" + state.Proto() + "." + state.QName(),
             Rrtype: dns.TypeSRV, Class: state.QClass()}
 port, _ := strconv.Atoi(state.Port())
@@ -184,7 +184,7 @@ We indicate a successful (even though it might have failed - we didn't check the
 # 4. Hooking it up
 
 Next we need to tell CoreDNS to compile and use this new middleware. Adding a middleware was
-recently simplified and only consists out of editing `middleware.cfg` and adding the line:
+recently simplified and only consists of editing `middleware.cfg` and adding the line:
 
 ~~~
 210:whoami:whoami
@@ -192,7 +192,7 @@ recently simplified and only consists out of editing `middleware.cfg` and adding
 The initial number is used for sorting the middleware (more on that below), then the name of the
 plugin as used in the registration and then the package inside the CoreDNS middleware directory.
 
-Each middleware has a place in the list of all other middlewares. For instance the caching
+Each middleware has a place in the list of all other ones. For instance the caching
 or the metrics middleware needs to come early, so that it can "see" the query and
 response and do cachy or metricsy things with it. A *whoami* middleware is not that special and can
 be placed relatively late in the list (hence the high number).
@@ -243,7 +243,7 @@ _tcp.example.org.	0	IN	SRV	0 0 33435 .
 ~~~
 Yes, it correctly sees we've used TCP this time (and of course a different port).
 
-There are already a lot of middlewares in CoreDNS. New, exciting once, are always welcome. So if you
+There are already a lot of different middleware in CoreDNS. New, exciting once, are always welcome. So if you
 have an idea open an issue on the tracker.
 
 This is an updated version of the [previous
