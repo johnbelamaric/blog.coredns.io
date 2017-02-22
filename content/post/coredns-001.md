@@ -3,6 +3,7 @@ date = "2016-09-18T11:40:37+01:00"
 slug = "CoreDNS-001 Release Notes"
 tags = ["Release", "001", "Notes"]
 title = "CoreDNS-001 Release"
+author = "miek"
 +++
 
 CoreDNS-001 has been [released](https://github.com/coredns/coredns/releases). This is the first

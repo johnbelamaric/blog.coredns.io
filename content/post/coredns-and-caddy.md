@@ -3,6 +3,7 @@ date = "2016-09-29T06:18:40Z"
 slug = "CoreDNS can now be downloaded from Caddy's download page"
 tags = ["Caddy", "Bugs", "Questions"]
 title = "Coredns and Caddy"
+author = "miek"
 +++
 [Caddy 0.9.3](https://forum.caddyserver.com/t/caddy-0-9-3-released/725) is released.  On it's
 [download page](https://caddyserver.com/download) you can now select the "DNS plugin" to be added

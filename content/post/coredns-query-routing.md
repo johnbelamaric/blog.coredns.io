@@ -3,6 +3,7 @@ date = "2016-10-13T08:50:13Z"
 slug = "Which middleware will handle a query?"
 tags = ["Corefile", "query", "routing"]
 title = "Query Routing"
+author = "miek"
 +++
 
 Quiz time, in the following Corefile:
