@@ -28,16 +28,16 @@ Fixed:
 
 ### New
 
-* *reverse*: middleware: allows CoreDNS to respond dynamicly to an PTR request and the related
+* *reverse* middleware: allows CoreDNS to respond dynamicly to an PTR request and the related
   A/AAAA request.
 
 ### Improvements/changes
 
-* *proxy*: a new `protocol`: `grpc`: speak DNS over gRPC. Server side impl. resides [in this out of
+* *proxy* a new `protocol`: `grpc`: speak DNS over gRPC. Server side impl. resides [in this out of
   tree middleware](https://github.com/coredns/coredns-grpc).
-* *file*: additional section processing for MX and SRV queries.
-* *prometheus*: fix hot reloading
-* *trace*: various improvements
+* *file* additional section processing for MX and SRV queries.
+* *prometheus* fix hot reloading
+* *trace* various improvements
 
 # Contributors
 
