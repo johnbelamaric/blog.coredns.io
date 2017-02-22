@@ -3,7 +3,7 @@ date = "2016-11-26T17:22:44Z"
 slug = "Using Google's dns.google.com with CoreDNS"
 tags = ["Encryption", "DNS", "Google"]
 title = "DNS over HTTPS"
-
+author = "miek"
 +++
 
 Since almost a year Google has a DNS service that can be queried over HTTPS:

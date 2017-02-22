@@ -3,6 +3,7 @@ date = "2016-12-19T08:00:24Z"
 slug = "A introduction into writing middleware for CoreDNS"
 tags = ["middleware", "coredns", "plugins"]
 title = "Writing Middleware for CoreDNS"
+author = "miek"
 +++
 
 As CoreDNS uses Caddy for setting up and using middleware, the process of writing middleware is

@@ -1,7 +1,6 @@
 baseurl = "https://blog.coredns.io/"
 languageCode = "en-us"
 title = "CoreDNS News"
-author = "CoreDNS Authors"
 copyright = "CoreDNS All Rights Reserved"
 theme = "hugo-zen"
 
@@ -15,3 +14,17 @@ theme = "hugo-zen"
 [permalinks]
     post = "/:year/:month/:day/:title/"
     page = "/:title/"
+
+[params.authors.miek]
+  name = "Miek Gieben"
+  location = "London, UK"
+  email = "miek@miek.nl"
+  twitter = "https://twitter.com/miekg"
+  github = "https://github.com/miekg"
+
+[params.authors.john]
+  name = "John Belamaric"
+  location = "Washington, DC"
+  email = "jbelamaric@infoblox.com"
+  twitter = "https://twitter.com/johnbelamaric"
+  github = "https://github.com/johnbelamaric"

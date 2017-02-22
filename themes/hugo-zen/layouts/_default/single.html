@@ -1,12 +1,18 @@
 {{ partial "header.html" . }}
-
+{{ $author := index .Site.Params.authors .Params.author }}
 	<main role="main">
 		<article itemscope itemtype="http://schema.org/BlogPosting">
 			<h1 class="entry-title" itemprop="headline">{{ .Title }}</h1>
 			<span class="entry-meta"><time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>&nbsp;&nbsp;</span>
                 <span class="entry-meta">
                     {{ range $i, $e := .Params.tags }}{{if $i}} &nbsp;{{end}}<a class="meta" href="/tags/{{ . | urlize }}">{{.}}</a>{{ end }}
-                </span>
+                </span><p/>
+		<span class="entry-author">
+		    {{ $author.name }}&nbsp;
+                    {{ with $author.email }}<a href="mailto:{{ . }}" target="_blank">Email</a>&nbsp;{{ end }}
+                    {{ with $author.twitter }}<a href="{{ . }}" target="_blank">Twitter</a>&nbsp;{{ end }}
+                    {{ with $author.github }}<a href="{{ . }}" target="_blank">GitHub</a>&nbsp;{{ end }}
+		</span>
 			<section itemprop="entry-text">
 				{{ .Content }}
 			</section>

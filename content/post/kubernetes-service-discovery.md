@@ -3,6 +3,7 @@ date = "2016-11-08T07:33:08Z"
 slug = "Using CoreDNS for service discovery in Kubernetes"
 tags = ["Kubernetes", "Service", "Discovery", "Kube-DNS"]
 title = "CoreDNS for Kubernetes Service Discovery"
+author = "miek"
 +++
 
 [Infoblox](https://www.infoblox.com/)'s John Belamaric has published a
