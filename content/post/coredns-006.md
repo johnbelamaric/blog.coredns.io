@@ -34,7 +34,7 @@ Fixed:
 ### Improvements/changes
 
 * *proxy* a new `protocol`: `grpc`: speak DNS over gRPC. Server side impl. resides [in this out of
-  tree middleware](https://github.com/coredns/coredns-grpc).
+  tree middleware](https://github.com/coredns/grpc).
 * *file* additional section processing for MX and SRV queries.
 * *prometheus* fix hot reloading
 * *trace* various improvements
