@@ -13,7 +13,7 @@ community to define a specification for [Kubernetes DNS-Based Service Discovery]
 (https://github.com/kubernetes/dns/blob/master/docs/specification.md), enabling us to ensure
 compatibility across the existing Kube-DNS implementation
 and our new one in CoreDNS. Version 1.0.0 of this specification mostly follows
-the current behavior of Kube-DNS. Version 005 of CoreDNS implements the full
+the current behavior of Kube-DNS. Versions 005 and higher of CoreDNS implement the full
 specification and more.
 
 At the time of that blog, the CoreDNS Kubernetes middleware only supported
@@ -23,7 +23,7 @@ serving `A` records with the cluster IP of an ordinary service. Now it includes:
 * `A` records for named endpoints that are part of a service (i.e., records for
   'pets')
 * `A` records for pods (optional) as described in the spec
-* `TXT` record for discovering the DNS schema version in use.
+* `TXT` record for discovering the DNS schema version in use
 
 The pod `A` record support is not needed in all clusters, and is disabled by
 default. Additionally, CoreDNS support for this use case goes beyond the
@@ -39,7 +39,7 @@ validation breaks the identity guarantee of the wildcard certificate.
 The CoreDNS integration offers the option `pods verified`, which will verify
 that the IP address `w.x.y.z` returned is in fact the IP of a pod in the
 specified namespace. This prevents the spoofing of a DNS name in the namespace.
-It does however, potentially increase the size of the CoreDNS instances
+It does however, potentially increase the memory footprint of the CoreDNS instances
 substantially, since now it needs to watch all pods, not just service endpoints.
 
 Ok, enough intro - let's see how to deploy this. Like in the previous blog, we
