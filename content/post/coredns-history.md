@@ -3,6 +3,7 @@ date = "2017-02-23T18:12:12Z"
 title = "History of CoreDNS in four posts"
 tags = ["CoreDNS","History","Caddy"]
 slug = "How CoreDNS came into existence"
+author = "miek"
 +++
 
 > Yes, at some point CoreDNS was actually a forked webserver doing DNS.
