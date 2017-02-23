@@ -1,5 +1,5 @@
 +++
-date = "2017-02-22T13:21:12Z"
+date = "2017-02-23T18:12:12Z"
 title = "History of CoreDNS in four posts"
 tags = ["CoreDNS","History","Caddy"]
 slug = "How CoreDNS came into existence"
