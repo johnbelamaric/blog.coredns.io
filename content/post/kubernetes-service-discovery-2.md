@@ -56,7 +56,7 @@ of the existing kube-dns service. For example, running
 with `kubectl` pointing to a cluster that has kube-dns service with cluster IP 10.3.0.10
 results in the manifest file below.[^1]
 
-[^1]: *Important:* If you are using Google Container Engine, there are additional processes that will not allow you to replace the kube-dns deployment (or replication controller). If you try to apply the above, it will successfully alter the Service but will soon kill your CoreDNS deployment and restart the Kube DNS replication controller. Since the service is updated, you actually will lose DNS in your cluster (the service selector for the service no longer points to the pods created by the Kube DNS replication controller. There is probably a way around this but I haven't had a chance to find the fix yet.
+[^1]: *Important:* If you are using Google Container Engine, there are additional processes that will not allow you to replace the kube-dns deployment (or replication controller). If you try to apply the above, it will successfully alter the Service but will soon kill your CoreDNS deployment and restart the Kube DNS replication controller. Since the service is updated, you actually will lose DNS in your cluster, as the service selector for the service no longer points to the pods created by the Kube DNS replication controller. There is probably a way around this but I haven't had a chance to find the fix yet.
 
 
 ~~~yaml
