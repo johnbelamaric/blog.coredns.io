@@ -3,6 +3,7 @@ date = "2017-03-01T20:23:48Z"
 slug = "How to add middleware to CoreDNS; a tutorial"
 tags = ["middleware", "howto", "tutorial"]
 title = "How to Add Middleware to CoreDNS"
+author = "miek"
 +++
 
 CoreDNS is a DNS server that chains middleware. Middleware is defined as a method `ServeDNS()` that
