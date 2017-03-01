@@ -1,5 +1,5 @@
 +++
-date = "2017-02-20T20:46:48Z"
+date = "2017-03-01T20:23:48Z"
 slug = "How to add middleware to CoreDNS; a tutorial"
 tags = ["middleware", "howto", "tutorial"]
 title = "How to Add Middleware to CoreDNS"

@@ -1,5 +1,5 @@
 +++
-date = "2017-02-22T07:33:08Z"
+date = "2017-03-01T20:33:08Z"
 slug = "CoreDNS is now fully compliant with the Kubernetes DNS Service Discovery Specification"
 tags = ["Kubernetes", "Service", "Discovery", "Kube-DNS"]
 title = "CoreDNS for Kubernetes Service Discovery, Take 2"
