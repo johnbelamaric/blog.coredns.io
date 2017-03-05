@@ -2,7 +2,7 @@
 date = "2017-02-23T18:12:12Z"
 title = "History of CoreDNS in four posts"
 tags = ["CoreDNS","History","Caddy"]
-slug = "How CoreDNS came into existence"
+slug = "How CoreDNS Came Into Existence"
 author = "miek"
 +++
 

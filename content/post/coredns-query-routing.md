@@ -35,15 +35,15 @@ To look what into what happens here we have to look the [directives
 ordering](https://github.com/coredns/coredns/blob/master/core/dnsserver/directives.go#L75):
 
 ~~~
-    ...
-    "dnssec",
-    "file",
-    "secondary",
-    "etcd",
-    "kubernetes",
-    "proxy",
-    "whoami"
-    ...
+...
+"dnssec",
+"file",
+"secondary",
+"etcd",
+"kubernetes",
+"proxy",
+"whoami"
+...
 ~~~
 
 And we see that *file* is first and *proxy* comes somewhat later. This means that in the example

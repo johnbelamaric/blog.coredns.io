@@ -159,16 +159,16 @@ Let's take a closer look at that Corefile. It's really very similar to the one i
 previous blog post.
 
 ~~~txt
-    .:53 {
-        errors
-        log stdout
-        health
-        kubernetes cluster.local {
-          cidrs 10.3.0.0/24
-        }
-        proxy . /etc/resolv.conf
-        cache 30
+.:53 {
+    errors
+    log stdout
+    health
+    kubernetes cluster.local {
+      cidrs 10.3.0.0/24
     }
+    proxy . /etc/resolv.conf
+    cache 30
+}
 ~~~
 
 The one difference though, is the `cidrs 10.3.0.0/24` directive. This tells the
