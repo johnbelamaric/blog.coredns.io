@@ -32,32 +32,32 @@ down the chain to whatever backend is going to answer it. Recall the `Corefile` 
 used in the last blog:
 
 ~~~ txt
-    .:53 {
-        errors
-        log stdout
-        health
-        kubernetes cluster.local {
-          cidrs 10.0.0.0/24
-        }
-        proxy . /etc/resolv.conf
-        cache 30
+.:53 {
+    errors
+    log stdout
+    health
+    kubernetes cluster.local {
+      cidrs 10.0.0.0/24
     }
+    proxy . /etc/resolv.conf
+    cache 30
+}
 ~~~
 
 To get the behavior we want, we just need to add a rewrite rule mapping `foo.example.com` to `foo.default.svc.cluster.local`:
 
 ~~~ txt
-    .:53 {
-        errors
-        log stdout
-        health
-        rewrite name foo.example.com foo.default.svc.cluster.local
-        kubernetes cluster.local {
-          cidrs 10.0.0.0/24
-        }
-        proxy . /etc/resolv.conf
-        cache 30
+.:53 {
+    errors
+    log stdout
+    health
+    rewrite name foo.example.com foo.default.svc.cluster.local
+    kubernetes cluster.local {
+      cidrs 10.0.0.0/24
     }
+    proxy . /etc/resolv.conf
+    cache 30
+}
 ~~~
 
 Once we add that to the `ConfigMap` via `kubectl edit` or `kubectl apply`, we have to let CoreDNS know that the `Corefile`
@@ -65,7 +65,6 @@ has changed. You can send it a `SIGUSR1` to tell it to reload graceful - that is
 
 ~~~ txt
 $ kubectl exec -n kube-system coredns-980047985-g2748 -- kill -SIGUSR1 1
-$
 ~~~
 
 Running our test pod, we can see this works:
@@ -162,5 +161,5 @@ as mentioned earlier, we could also use the `etcd` backend and avoid the hassle 
 sending the signal.
 
 This brings us to the last problem. That one can be solved using the new support for `fallthrough` in the `kubernetes`
-middleware. This functionality will be added in the 007 release of CoreDNS - we'll come back with another blog to
-show how to use it once that is released.
+middleware. This functionality has been added in the recently released version 007 of CoreDNS - we'll come back with
+another blog soon show how to use it.
