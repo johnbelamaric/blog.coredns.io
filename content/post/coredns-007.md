@@ -32,6 +32,7 @@ this blog.
 * *metrics* will happily start as many (different) listeners as you want (if you really need that).
 * *startup* and *shutdown* allow for command to be run during startup or shutdown. These directly use the code from Caddy, see [Caddy's docs](https://caddyserver.com/docs/startup).
 * *kubernetes* now implements a `fallthrough` option to pass queries that would result in NXDOMAIN to the next middleware, even if the query is in the cluster domain. This enables custom DNS entries in the cluster domain (as long as they do not overlap with a normal Kubernetes record). To facilitate this the middleware ordering is also altered to put *kubernetes* in the chain before other backends.
+* *cache* will no longer cache RRSIGs that will expire while cached.
 
 # Contributors
 
