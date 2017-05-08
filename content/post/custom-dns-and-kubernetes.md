@@ -1,5 +1,5 @@
 +++
-date = "2017-04-28T12:30:00Z"
+date = "2017-05-08T20:01:00Z"
 slug = "Creating custom DNS entries inside or outside the cluster domain using CoreDNS"
 tags = ["Kubernetes", "Service", "Discovery", "Kube-DNS", "Custom", "DNS"]
 title = "Custom DNS Entries For Kubernetes"
