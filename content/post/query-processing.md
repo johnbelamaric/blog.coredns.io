@@ -28,17 +28,17 @@ Consider this Corefile:
 
 ~~~ txt
 coredns.io:5300 {
-  file /etc/coredns/zones/coredns.io.db coredns.io
+  file /etc/coredns/zones/coredns.io.db
 }
 
 example.io:53 {
   errors
   log
-  file /etc/coredns/zones/example.io.db example.io
+  file /etc/coredns/zones/example.io.db
 }
 
 example.net:53 {
-  file /etc/coredns/zones/example.net.db example.net
+  file /etc/coredns/zones/example.net.db
 }
 
 .:53 {
@@ -57,7 +57,7 @@ example.net:53 {
 
 Notice here that there are two different ports: 5300 and 53. Internally, each of these ports will
 result in a [`dnsserver.Server`](https://github.com/coredns/coredns/blob/master/core/dnsserver/server.go).
-Even though there are four _server blocks_ (stanzas), we only need two actual servers. CoreDNS will gather up all of the
+Even though there are four _server blocks_ (stanzas), we only get two actual servers. CoreDNS will gather up all of the
 server blocks associated with the same port and combine them in to the same `dnsserver.Server`. The server will
 multiplex the queries on the port, passing them to the different _middleware chains_ depending upon the zone. It chooses
 the most specific matching server block for the zone. If no server block matches, `SERVFAIL` is returned. This is shown
@@ -74,8 +74,8 @@ middleware chain.
 Notice in the `.:53` server block, we define the `health` middleware, but it doesn't appear in the diagram. This is
 because there are a few different types of middleware. "Normal" middleware perform request handling, and appear in the
 middleware chain. However, there are a few middleware that just modify the configuration of the server or server block.
-Since they don't have any request-time logic, they are not inserted in the middleware chain. Today only the `health`,
-`tls`, and `root` middleware work this way.
+Since they don't have any request-time logic, they are not inserted in the middleware chain. Some middleware that work
+this way are the `health`, `tls`, `startup`, `shutdown`, and `root` middleware.
 
 You can divide the middleware that do perform request-time processing into two groups: middleware that
 _manipulate_ the request in some way, and _backend_ middleware. Backend middleware provide different sources
